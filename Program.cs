@@ -1,14 +1,18 @@
 using System.Reflection;
+using DSW_3P_PR02.Data;
 using DSW_3P_PR02.Repositories;
 using DSW_3P_PR02.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Registro de Repository (Versión 1: JSON) y Service
-builder.Services.AddScoped<IEventoRepository, JsonEventoRepository>();
+// Registro de DbContext (SQL Server) y Repository (Versión 2: EF Core) + Service
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IEventoRepository, EfEventoRepository>();
 builder.Services.AddScoped<IEventoService, EventoService>();
 
 // Configuración de Swagger / OpenAPI
