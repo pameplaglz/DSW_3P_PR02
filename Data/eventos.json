@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Hackaton Nacional IA 2026 - Edicion Especial",
+    "Categoria": "Hackat\u00F3n",
+    "Fecha": "2026-11-21T10:00:00",
+    "Lugar": "Centro de Convenciones",
+    "CupoMaximo": 200,
+    "Activo": true
+  }
+]
